@@ -1,3 +1,13 @@
+import java.net.URI
+
+group = "com.gxf.oslp-protobuf"
+
+version = System.getenv("GITHUB_REF_NAME")
+    ?.replace("/", "-")
+    ?.lowercase()
+    ?.let { if (SemVer.valid(it)) it.removePrefix("v") else "${it}-SNAPSHOT" }
+    ?: "develop"
+
 plugins {
     id("java")
     alias(libs.plugins.protobuf)
@@ -21,6 +31,25 @@ sourceSets {
     named("main") {
         java {
             srcDir("src/generated/main/java")
+        }
+    }
+}
+
+extensions.configure<PublishingExtension> {
+    repositories {
+        mavenLocal()
+        maven {
+            name = "GitHubPackages"
+            url = URI("https://maven.pkg.github.com/osgp/oslp-protobuf")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        create<MavenPublication>("java") {
+            from(components.getByName("java"))
         }
     }
 }
