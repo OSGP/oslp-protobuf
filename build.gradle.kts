@@ -5,7 +5,7 @@ group = "com.gxf.oslp-protobuf"
 version = System.getenv("GITHUB_REF_NAME")
     ?.replace("/", "-")
     ?.lowercase()
-    ?.let { if (SemVer.valid(it)) it.removePrefix("v") else "${it}-SNAPSHOT" }
+    ?.let { "${it}-SNAPSHOT" }
     ?: "develop"
 
 plugins {
