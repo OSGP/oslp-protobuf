@@ -32,11 +32,10 @@ jobs:
         with:
           dependency-graph: generate-and-submit
       - name: Build with Gradle
-        run: ./gradlew build protoJar
+        run: ./gradlew protoJar
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Publish Maven artifacts
         if: github.ref == 'refs/heads/main' || github.ref_type == 'tag'
         run: ./gradlew publish
