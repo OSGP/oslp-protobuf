@@ -1,4 +1,6 @@
 import java.net.URI
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
 
 group = "com.gxf.oslp-protobuf"
 
