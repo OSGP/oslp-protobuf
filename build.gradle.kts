@@ -57,6 +57,7 @@ extensions.configure<PublishingExtension> {
     }
 }
 
+
 tasks.register<Jar>("protoJar") {
     archiveClassifier.set("proto")
     from("src/generated/main/java")
