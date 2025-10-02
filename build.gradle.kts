@@ -50,6 +50,7 @@ extensions.configure<PublishingExtension> {
             }
         }
     }
+
     publications {
         create<MavenPublication>("java") {
             from(components.getByName("java"))
