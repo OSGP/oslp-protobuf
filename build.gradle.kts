@@ -12,6 +12,7 @@ version = System.getenv("GITHUB_REF_NAME")
 
 plugins {
     id("java")
+    `maven-publish`
     alias(libs.plugins.protobuf)
 }
 
@@ -41,7 +42,7 @@ extensions.configure<PublishingExtension> {
     repositories {
         mavenLocal()
         maven {
-            name = "GitHubPackages"
+            name = "GXFGithubPackages"
             url = URI("https://maven.pkg.github.com/osgp/oslp-protobuf")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
