@@ -2,7 +2,7 @@ import java.net.URI
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 
-group = "com.gxf.oslp-protobuf"
+group = "org.lfenergy.gxf.oslp-protobuf"
 
 version = System.getenv("GITHUB_REF_NAME")
     ?.replace("/", "-")
