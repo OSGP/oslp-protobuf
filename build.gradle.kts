@@ -4,10 +4,12 @@ import org.gradle.api.publish.maven.MavenPublication
 
 group = "org.lfenergy.gxf.oslp-protobuf"
 
+val semVerRegex = Regex("""^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:[-+][\w\.-]+)?$""")
+
 version = System.getenv("GITHUB_REF_NAME")
     ?.replace("/", "-")
     ?.lowercase()
-    ?.let { "${it}-SNAPSHOT" }
+    ?.let { if(semVerRegex.matches(it)) it.removePrefix("v") else "${it}-SNAPSHOT" }
     ?: "develop"
 
 plugins {
