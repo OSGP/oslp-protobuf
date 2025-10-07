@@ -4,6 +4,9 @@
 name: Gradle Pipeline
 
 on:
+  release:
+    types:
+      - published
   push:
     branches: [ "main" ]
     tags: [ "v**" ]
