@@ -4,6 +4,7 @@
 [versions]
 protobuf = "4.32.1"
 protobufPlugin = "0.9.5"
+shadow = "9.2.0"
 
 [libraries]
 protoJava = { group = "com.google.protobuf", name = "protobuf-java", version.ref = "protobuf" }
@@ -11,3 +12,4 @@ protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protob
 
 [plugins]
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
