@@ -16,6 +16,7 @@ plugins {
     id("java")
     `maven-publish`
     alias(libs.plugins.protobuf)
+    alias(libs.plugins.shadow)
 }
 
 repositories {
@@ -63,4 +64,15 @@ extensions.configure<PublishingExtension> {
 tasks.register<Jar>("protoJar") {
     archiveClassifier.set("proto")
     from("src/generated/main/java")
+}
+
+tasks {
+    shadowJar {
+        archiveClassifier.set("")
+        mergeServiceFiles()
+    }
+
+    build {
+        dependsOn(shadowJar)
+    }
 }
