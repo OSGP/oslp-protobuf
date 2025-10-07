@@ -33,7 +33,7 @@ jobs:
         with:
           dependency-graph: generate-and-submit
       - name: Build with Gradle
-        run: ./gradlew protoJar
+        run: ./gradlew build
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
