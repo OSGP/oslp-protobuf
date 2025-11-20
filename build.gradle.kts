@@ -15,6 +15,7 @@ version = System.getenv("GITHUB_REF_NAME")
 plugins {
     id("java")
     `maven-publish`
+    alias(libs.plugins.kotlinJvm)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.shadow)
 }
@@ -24,12 +25,21 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.protoJava)
+    implementation(libs.protobufKotlin)
 }
+
+kotlin { jvmToolchain(21) }
 
 protobuf {
     protoc {
         artifact = libs.protoc.get().toString()
+    }
+    generateProtoTasks {
+        all().forEach {
+            it.builtins {
+                register("kotlin")
+            }
+        }
     }
 }
 
