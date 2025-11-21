@@ -2,14 +2,16 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
+kotlin = "2.2.20"
 protobuf = "4.32.1"
 protobufPlugin = "0.9.5"
 shadow = "9.2.0"
 
 [libraries]
-protoJava = { group = "com.google.protobuf", name = "protobuf-java", version.ref = "protobuf" }
+protobufKotlin = { group = "com.google.protobuf", name = "protobuf-kotlin", version.ref = "protobuf" }
 protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
 
 [plugins]
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
